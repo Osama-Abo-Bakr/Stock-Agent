@@ -1,32 +1,52 @@
 [
     {
-        "timestamp": "2025-01-26T02:43:00Z",
-        "ticker": "NDX",
-        "company_name": "Nasdaq-100 Index",
-        "prediction": "down",
-        "confidence": 0.7,
-        "time_horizon": "2 hours",
-        "price_target": "19200-19300",
-        "rationale": "Recent news highlights a significant drop due to market sentiment inspired by China's AI competition, in contrast to prior moderate upward expectations from sentiment score."
-    },
-    {
-        "timestamp": "2025-01-26T02:43:00Z",
-        "ticker": "NVDA",
-        "company_name": "Nvidia Corporation",
-        "prediction": "down",
-        "confidence": 0.8,
-        "time_horizon": "2 hours",
-        "price_target": "410-420",
-        "rationale": "News indicates significant pressure on Nvidia due to external tech market influences, aligning with low market sentiment."
-    },
-    {
-        "timestamp": "2025-01-26T02:43:00Z",
-        "ticker": "BAJAJ-AUTO.NS",
-        "company_name": "Bajaj Auto Limited",
+        "timestamp": "2025-01-27T01:29:00Z",
+        "ticker": "MA",
+        "company_name": "Mastercard Incorporated",
         "prediction": "up",
-        "confidence": 0.67,
+        "confidence": 0.75,
         "time_horizon": "2 hours",
-        "price_target": "4200-4250",
-        "rationale": "Sentiment and urgency scores suggest slight upward momentum despite broader market pressures, emphasizing stable domestic auto sector trends."
+        "price_target": "up to 563.00",
+        "rationale": "Moderate increase due to earnings anticipation; historical data indicates a solid response to earnings."
+    },
+    {
+        "timestamp": "2025-01-27T01:29:00Z",
+        "ticker": "TMO",
+        "company_name": "Thermo Fisher Scientific Inc.",
+        "prediction": "up",
+        "confidence": 0.70,
+        "time_horizon": "2 hours",
+        "price_target": "up to 594.00",
+        "rationale": "Slight increase anticipated from earnings report and consistent historical performance."
+    },
+    {
+        "timestamp": "2025-01-27T01:29:00Z",
+        "ticker": "CAT",
+        "company_name": "Caterpillar Inc.",
+        "prediction": "down",
+        "confidence": 0.65,
+        "time_horizon": "2 hours",
+        "price_target": "down to 395.00",
+        "rationale": "Potential slight decline unless earnings outperform; minimal change expected based on history."
+    },
+    {
+        "timestamp": "2025-01-27T01:29:00Z",
+        "ticker": "MSFT",
+        "company_name": "Microsoft Corporation",
+        "prediction": "up",
+        "confidence": 0.80,
+        "time_horizon": "2 hours",
+        "price_target": "up to 436.00",
+        "rationale": "Moderate increase expected due to strong earnings forecast and past performance trends."
+    },
+    {
+        "timestamp": "2025-01-27T01:29:00Z",
+        "ticker": "META",
+        "company_name": "Meta Platforms, Inc.",
+        "prediction": "up",
+        "confidence": 0.85,
+        "time_horizon": "2 hours",
+        "price_target": "up to 663.00",
+        "rationale": "Significant increase anticipated after outperforming revenue; strong historical earnings response."
     }
 ]
