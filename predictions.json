@@ -1,0 +1,32 @@
+[
+    {
+        "timestamp": "2025-01-26T02:43:00Z",
+        "ticker": "NDX",
+        "company_name": "Nasdaq-100 Index",
+        "prediction": "down",
+        "confidence": 0.7,
+        "time_horizon": "2 hours",
+        "price_target": "19200-19300",
+        "rationale": "Recent news highlights a significant drop due to market sentiment inspired by China's AI competition, in contrast to prior moderate upward expectations from sentiment score."
+    },
+    {
+        "timestamp": "2025-01-26T02:43:00Z",
+        "ticker": "NVDA",
+        "company_name": "Nvidia Corporation",
+        "prediction": "down",
+        "confidence": 0.8,
+        "time_horizon": "2 hours",
+        "price_target": "410-420",
+        "rationale": "News indicates significant pressure on Nvidia due to external tech market influences, aligning with low market sentiment."
+    },
+    {
+        "timestamp": "2025-01-26T02:43:00Z",
+        "ticker": "BAJAJ-AUTO.NS",
+        "company_name": "Bajaj Auto Limited",
+        "prediction": "up",
+        "confidence": 0.67,
+        "time_horizon": "2 hours",
+        "price_target": "4200-4250",
+        "rationale": "Sentiment and urgency scores suggest slight upward momentum despite broader market pressures, emphasizing stable domestic auto sector trends."
+    }
+]
