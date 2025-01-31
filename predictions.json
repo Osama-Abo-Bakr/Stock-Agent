@@ -1,52 +1,22 @@
 [
     {
-        "timestamp": "2025-01-27T01:29:00Z",
-        "ticker": "MA",
-        "company_name": "Mastercard Incorporated",
+        "timestamp": "2025-01-31T03:18:00Z",
+        "ticker": "URI",
+        "company_name": "United Rentals, Inc.",
         "prediction": "up",
-        "confidence": 0.75,
+        "confidence": 0.84,
         "time_horizon": "2 hours",
-        "price_target": "up to 563.00",
-        "rationale": "Moderate increase due to earnings anticipation; historical data indicates a solid response to earnings."
+        "price_target": [780, 790], 
+        "rationale": "Strong buy sentiment combined with positive real-time quote and historical data trends."
     },
     {
-        "timestamp": "2025-01-27T01:29:00Z",
-        "ticker": "TMO",
-        "company_name": "Thermo Fisher Scientific Inc.",
+        "timestamp": "2025-01-31T03:18:00Z",
+        "ticker": "CEG",
+        "company_name": "Constellation Energy Corporation",
         "prediction": "up",
-        "confidence": 0.70,
+        "confidence": 0.90,
         "time_horizon": "2 hours",
-        "price_target": "up to 594.00",
-        "rationale": "Slight increase anticipated from earnings report and consistent historical performance."
-    },
-    {
-        "timestamp": "2025-01-27T01:29:00Z",
-        "ticker": "CAT",
-        "company_name": "Caterpillar Inc.",
-        "prediction": "down",
-        "confidence": 0.65,
-        "time_horizon": "2 hours",
-        "price_target": "down to 395.00",
-        "rationale": "Potential slight decline unless earnings outperform; minimal change expected based on history."
-    },
-    {
-        "timestamp": "2025-01-27T01:29:00Z",
-        "ticker": "MSFT",
-        "company_name": "Microsoft Corporation",
-        "prediction": "up",
-        "confidence": 0.80,
-        "time_horizon": "2 hours",
-        "price_target": "up to 436.00",
-        "rationale": "Moderate increase expected due to strong earnings forecast and past performance trends."
-    },
-    {
-        "timestamp": "2025-01-27T01:29:00Z",
-        "ticker": "META",
-        "company_name": "Meta Platforms, Inc.",
-        "prediction": "up",
-        "confidence": 0.85,
-        "time_horizon": "2 hours",
-        "price_target": "up to 663.00",
-        "rationale": "Significant increase anticipated after outperforming revenue; strong historical earnings response."
+        "price_target": [310, 320],
+        "rationale": "Strong buy sentiment paired with positive real-time quote and historical performance."
     }
 ]

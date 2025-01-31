@@ -1,13 +1,14 @@
 # Real-Time Stock Market Analysis and Prediction System
 
-This project is a real-time stock market analysis and prediction system that leverages AI agents to fetch financial news, analyze market sentiment, and generate short-term trading signals. The system is built using the `crewai` framework and integrates with OpenAI's GPT-4 model for natural language processing and decision-making.
+This project is a sophisticated real-time stock market analysis and prediction system that leverages AI agents to fetch financial news, analyze market sentiment, and generate short-term trading signals. Built using the `crewai` framework, the system integrates with advanced language models and financial APIs to provide actionable insights for traders and investors.
 
 ## Features
 
 - **Real-time News Aggregation**: Fetches the latest financial news from trusted sources to identify market-moving events.
 - **Sentiment Analysis**: Analyzes the sentiment of news articles and assesses their immediate impact on specific stocks.
+- **Technical Analysis**: Utilizes technical indicators such as RSI, MACD, and moving averages to evaluate stock conditions.
 - **Stock Price Prediction**: Predicts short-term stock movements based on real-time news, market conditions, and technical indicators.
-- **Sequential Workflow**: Utilizes a sequential process where each agent's output is used as input for the next agent, ensuring a coherent analysis pipeline.
+- **Sequential Workflow**: Employs a sequential process where each agent's output is used as input for the next agent, ensuring a coherent and efficient analysis pipeline.
 
 ## Project Structure
 
@@ -17,34 +18,61 @@ This project is a real-time stock market analysis and prediction system that lev
 - **`crew.py`**: Sets up the crew of agents, defines the workflow, and kicks off the analysis process.
 - **`tasks.py`**: Contains the tasks assigned to each agent, including descriptions and expected outputs.
 - **`tools/`**: Contains the tools used by the agents, including:
-  - **`finance_tools.py`**: Tools for fetching historical stock prices and predictions.
+  - **`finance_tools.py`**: Tools for fetching historical stock prices, real-time quotes, and technical analysis.
   - **`search_tools.py`**: Tools for searching the internet for real-time financial news.
 
 ## Setup Instructions
 
-1. **Clone the Repository**:
+1. **Install Python 3.10+**:
+   - Ensure you have Python 3.10 or higher installed. You can download it from the official [Python website](https://www.python.org/downloads/).
+   - Verify the installation by running:
+     ```bash
+     python --version
+     ```
+     or
+     ```bash
+     python3 --version
+     ```
+
+2. **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/Stock-Agent.git
    cd Stock-Agent
    ```
 
-2. **Install Dependencies**:
-   Ensure you have Python 3.10+ installed. Then, install the required packages:
+3. **Create a Virtual Environment**:
+   To isolate dependencies, create a virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+
+4. **Activate the Virtual Environment**:
+   - On macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+   - On Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+
+5. **Install Dependencies**:
+   Install the required packages:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Set Up Environment Variables**:
+6. **Set Up Environment Variables**:
    - Rename `.env.example` to `.env`.
    - Fill in the required API keys:
      ```plaintext
      OPENAI_API_KEY=your_openai_api_key
      SERPER_API_KEY=your_serper_api_key
-     ALPHAVANTAGE_API_KEY=your_alphavantage_api_key
      FINNHUB_API_KEY=your_finnhub_api_key
+     GROQ_API_KEY=your_groq_api_key
      ```
 
-4. **Run the System**:
+7. **Run the System**:
    Execute the `crew.py` script to start the analysis:
    ```bash
    python crew.py
@@ -59,66 +87,70 @@ This project is a real-time stock market analysis and prediction system that lev
    - **Output**: JSON array of news articles with relevant details.
 
 ### 2. **News Stocks Analyzer**
-   - **Role**: Real-time Market Analyst
-   - **Goal**: Analyze news sentiment and immediate market impact.
-   - **Tools**: `SearchTools.search_internet`, `FinanceTools.fetch_historical_prices`
+   - **Role**: Quantitative Impact Analyst
+   - **Goal**: Analyze news sentiment and immediate market impact using technical indicators.
+   - **Tools**: `SearchTools.search_internet`, `FinanceTools.fetch_historical_prices`, `FinanceTools.analyze_technical`
    - **Output**: JSON array with sentiment scores, urgency scores, and expected impact for affected stocks.
 
 ### 3. **Stock Predictor**
    - **Role**: Algorithmic Trading Strategist
    - **Goal**: Predict short-term stock movements based on real-time news and market conditions.
-   - **Tools**: `SearchTools.search_internet`, `FinanceTools.fetch_historical_prices`, `FinanceTools.fetch_predictions`
+   - **Tools**: `FinanceTools.fetch_historical_prices`, `FinanceTools.fetch_realtime_quote`, `FinanceTools.analyze_technical`, `FinanceTools.fetch_predictions`
    - **Output**: JSON array of trading signals with predictions, confidence levels, and price targets.
 
 ## Tasks Overview
 
 ### 1. **News Fetcher Task**
-   - Collects real-time financial news from the past 60 minutes.
+   - Collects real-time financial news from the past 4 hours.
    - Prioritizes news with high market impact (earnings releases, M&A activity, regulatory decisions, etc.).
-   - **Expected Output**: JSON array of news articles with fields: `timestamp`, `source`, `headline`, `summary`, `affected_tickers`.
+   - **Expected Output**: JSON array of news articles with fields: `timestamp`, `source`, `headline`, `affected_tickers`, `summary`.
 
 ### 2. **News Stocks Analyzer Task**
    - Analyzes news sentiment and calculates urgency scores.
-   - Identifies affected stocks and estimates potential price movements.
-   - **Expected Output**: JSON array with fields: `ticker`, `sentiment_score`, `urgency_score`, `expected_impact`, `confidence`, `historical_data`, `predictions`.
+   - Identifies affected stocks and estimates potential price movements using technical indicators.
+   - **Expected Output**: JSON array with fields: `ticker`, `sentiment_score`, `technical_urgency`, `expected_move`, `confidence`.
 
 ### 3. **Stock Predictor Task**
    - Generates immediate trading signals valid for the next 2 hours.
    - Combines real-time news analysis with technical indicators to predict price direction.
-   - **Expected Output**: JSON array of predictions with fields: `timestamp`, `ticker`, `company_name`, `prediction`, `confidence`, `time_horizon`, `price_target`, `rationale`.
+   - **Expected Output**: JSON array of predictions with fields: `ticker`, `company_name`, `direction`, `confidence`, `timeframe`, `price_target`, `max_risk`, `rationale`.
 
 ## Output
 
 The system outputs real-time market predictions in JSON format, including:
 - **Ticker**: The stock symbol.
-- **Prediction**: The predicted price direction (up/down).
+- **Company Name**: The name of the company.
+- **Direction**: The predicted price direction (Buy/Sell).
 - **Confidence**: The confidence level of the prediction.
+- **Timeframe**: The validity period of the prediction.
 - **Price Target**: The expected price range.
+- **Max Risk**: The maximum risk associated with the trade.
 - **Rationale**: The reasoning behind the prediction.
 
 ## Example Output
 
 ```json
 {
-  "timestamp": "2023-10-05 14:30",
   "ticker": "AAPL",
   "company_name": "Apple Inc.",
-  "prediction": "up",
+  "direction": "Buy",
   "confidence": 0.87,
-  "time_horizon": "2 hours",
+  "timeframe": "2 hours",
   "price_target": "180.50 - 182.00",
+  "max_risk": "1.5%",
   "rationale": "Positive earnings surprise and strong technical indicators suggest upward momentum."
 }
 ```
 
 ## Dependencies
 
-- `crewai`: Framework for managing AI agents and tasks.
-- `langchain_openai`: Integration with OpenAI's GPT-4 model.
-- `python-dotenv`: Loads environment variables from `.env` file.
-- `langchain`: For creating specific tools.
-- `requests`: For making HTTP requests to external APIs.
-- `pandas`: For handling and manipulating data.
+- **`crewai`**: Framework for managing AI agents and tasks.
+- **`langchain_openai`**: Integration with OpenAI's GPT-4 model.
+- **`python-dotenv`**: Loads environment variables from `.env` file.
+- **`langchain`**: For creating specific tools.
+- **`requests`**: For making HTTP requests to external APIs.
+- **`pandas`**: For handling and manipulating data.
+- **`yfinance`**: For fetching historical stock prices.
 
 ## License
 
@@ -126,6 +158,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 
-- OpenAI for providing the GPT-4o model.
-- Serper API for enabling real-time news search capabilities.
-- FinnHub For real-time perdiction and recommendation in stocks.
+- **OpenAI** for providing the GPT-4 model.
+- **Serper API** for enabling real-time news search capabilities.
+- **Finnhub** for providing real-time stock predictions and recommendations.
+- **Groq** for providing the high-performance language model used in this project.

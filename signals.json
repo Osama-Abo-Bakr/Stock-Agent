@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "direction": "Buy",
+    "confidence": 0.75,
+    "timeframe": "2 hours",
+    "price_target": 419.99,
+    "max_risk": 1.83,
+    "rationale": "Oversold conditions with RSI <30 and decreasing bearish MACD momentum suggest reversal potential."
+  }
+]

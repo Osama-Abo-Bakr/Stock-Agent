@@ -3,93 +3,53 @@ from datetime import datetime
 
 class StocksTasks():
     def news_fetcher_task(self, agent):
-        """
-        Collects real-time financial news from the past 60 minutes and prioritizes news with high market impact.
-
-        The news fetcher task collects news articles from trusted sources with real-time reporting capabilities.
-        The articles are then filtered and prioritized based on their potential impact on the financial markets.
-        The expected output is a JSON array of news articles with fields: timestamp, source, headline, summary, affected_tickers.
-
-        Parameters
-        ----------
-        agent : Agent
-            The agent responsible for executing the task.
-
-        Returns
-        -------
-        Task
-            A Task object with the description, agent, context, and expected output.
-        """
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         return Task(
             description=(
-                f"Collect real-time financial news from the past 60 minutes (as of {current_time}). "
-                "Prioritize news with high market impact: earnings releases, M&A activity, "
-                "regulatory decisions, and macroeconomic indicators. "
-                "Focus on sources with real-time reporting capabilities."
+               f"Identify market-moving news from past 4 hours ({current_time})."
+                "Filter for events affecting publicly traded companies. "
+                "Prioritize by source credibility and ticker mention frequency."
             ),
             agent=agent,
             expected_output=(
-                "JSON array of news articles with fields: "
-                "timestamp, source, headline, summary, affected_tickers"
+                "List[Dict]: Minimum 3 news items with fields - "
+                "timestamp, source, headline, affected_tickers, summary"
             )
         )
         
-    def news_stocks_analyzer_task(self, agent, context):        
-        """
-        Analyze news sentiment and immediate market impact.
-
-        Calculate urgency score based on news type and market conditions.
-        Identify affected stocks and estimate magnitude of potential price movement.
-        Include historical price data and predictions in the analysis.
-
-        param agent: The Agent responsible for the analysis.
-        param context: The context containing the tasks and agents that came before.
-        
-        :return: A Task object containing the description, agent, context, and expected output.
-        """
+    def news_stocks_analyzer_task(self, agent, context):
         return Task(
             description=(
-                "Analyze news sentiment and immediate market impact. "
-                "Calculate urgency score based on news type and market conditions. "
-                "Identify affected stocks and estimate magnitude of potential price movement. "
-                "Include historical price data and predictions in the analysis."
+                "Analyze news impact using: \n"
+                "1. Sentiment polarity (-1 to 1 scale) \n"
+                "2. Historical volatility (20-day) \n"
+                "3. Current RSI/MACD positioning \n"
+                "4. Volume spike detection"
             ),
             agent=agent,
             context=context,
             expected_output=(
-                "JSON array with fields: "
-                "ticker, sentiment_score, urgency_score, expected_impact, confidence, historical_data, predictions"
+                "List[Dict]: Analysis for each ticker with - "
+                "sentiment_score, technical_urgency (1-5), "
+                "expected_move (%), confidence (0-1)"
             )
         )
         
     def stock_predictor_task(self, agent, context):
-        """
-        Generates immediate trading signals valid until the current time.
-
-        Predicts price direction (up/down) for next 2 trading hours.
-        Combines real-time news analysis with technical indicators, historical data, and predictions.
-        Includes confidence level and price target ranges.
-
-        :param agent: The Agent responsible for generating the predictions.
-        :param context: The context containing the tasks and agents that came before.
-        :return: A Task object containing the description, agent, context, and expected output.
-        """
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
         return Task(
             description=(
-                f"Generate immediate trading signals valid until {current_time}. "
-                "Predict price direction (up/down) for next 2 trading hours. "
-                "Combine real-time news analysis with technical indicators, historical data, and predictions. "
-                "Include confidence level and price target ranges."
+                "Generate 2-hour trading signals with: \n"
+                "- Entry/exit price ranges \n"
+                "- Stop-loss levels \n"
+                "- Risk/reward ratios \n"
+                "Prioritize setups with RSI <30/>70 and MACD crosses"
             ),
             agent=agent,
             context=context,
             expected_output=(
-                "JSON array of predictions with fields: "
-                "timestamp, ticker, company_name, prediction, confidence, time_horizon, "
-                "price_target, rationale. "
-                "Example: {\"ticker\": \"AAPL\", \"prediction\": \"up\", \"confidence\": 0.87}"
+                "List[Dict]: Executable signals with - "
+                "ticker, company_name, direction (Buy/Sell), confidence (0-1), "
+                "timeframe, price_target, max_risk, rationale"
             ),
-            output_file='./predictions.json'
+            output_file='./signals.json'
         )

@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-llm = ChatOpenAI(
-    model="gpt-4o",
-    temperature=0.3  # Lower temperature for more factual responses
-)
+# llm = ChatOpenAI(
+#     model="gpt-4o",
+#     temperature=0.3
+# )
 
 agents = StocksAgents()
 tasks = StocksTasks()
@@ -27,7 +27,7 @@ crew = Crew(
     tasks=[fetch_task, analysis_task, prediction_task],
     verbose=True,
     process=Process.sequential,
-    manager_llm=llm
+    # manager_llm=llm
 )
 
 result = crew.kickoff()
