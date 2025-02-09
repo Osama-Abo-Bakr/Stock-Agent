@@ -1,0 +1,17 @@
+[
+    {
+        "ticker": "AAPL",
+        "sentiment_score": -0.5,
+        "technical_urgency": 3,
+        "expected_move": -4.00,
+        "confidence": 0.65
+    },
+    {
+        "ticker": "TSLA",
+        "sentiment_score": 0.3,
+        "technical_urgency": 4,
+        "expected_move": -3.50,
+        "confidence": 0.70
+    }
+]
+```

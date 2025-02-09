@@ -1,11 +1,11 @@
 from crewai import Agent
 from tools.search_tools import SearchTools
 from tools.finance_tools import FinanceTools
-from crewai import LLM
+# from crewai import LLM
 
-llm = LLM(
-    model="groq/deepseek-r1-distill-llama-70b",
-)
+# llm = LLM(
+#     model="groq/deepseek-r1-distill-llama-70b",
+# )
 
 class StocksAgents():
     def news_fetcher(self):
@@ -29,7 +29,7 @@ class StocksAgents():
             tools=[SearchTools.search_internet],
             verbose=True,
             memory=True,
-            llm=llm,
+            # llm=llm,
             backstory=(
                 "A veteran news analyst with 15 years experience tracking market-moving events. "
                 "Specializes in real-time identification of earnings surprises, M&A activity, "
@@ -65,7 +65,7 @@ class StocksAgents():
             
             verbose=True,
             memory=True,
-            llm=llm,
+            # llm=llm,
             backstory=(
                 "Former hedge fund analyst combining NLP sentiment analysis with technical "
                 "indicators to quantify news impact. Creates urgency scores using SMA/RSI "
@@ -103,7 +103,7 @@ class StocksAgents():
             ],
             verbose=True,
             memory=True,
-            llm=llm,
+            # llm=llm,
             backstory=(
                 "Ex-high frequency trading developer specializing in event-driven strategies. "
                 "Combines MACD crossovers, RSI extremes, and news sentiment to predict "

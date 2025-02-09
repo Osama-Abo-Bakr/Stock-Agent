@@ -1,5 +1,6 @@
 from crewai import Task
 from datetime import datetime
+from utils import is_market_open
 
 class StocksTasks():
     def news_fetcher_task(self, agent):
@@ -14,7 +15,8 @@ class StocksTasks():
             expected_output=(
                 "List[Dict]: Minimum 3 news items with fields - "
                 "timestamp, source, headline, affected_tickers, summary"
-            )
+            ),
+            output_file='./news.json'
         )
         
     def news_stocks_analyzer_task(self, agent, context):
@@ -32,13 +34,15 @@ class StocksTasks():
                 "List[Dict]: Analysis for each ticker with - "
                 "sentiment_score, technical_urgency (1-5), "
                 "expected_move (%), confidence (0-1)"
-            )
+            ),
+            output_file='./news_stocks_analysis.json'
         )
-        
-    def stock_predictor_task(self, agent, context):
+    
+    def stock_predictor_task(self, agent, context, timeframe="2 hours"):
+        timeframe = f"{timeframe}" if is_market_open() else "Next trading session"
         return Task(
             description=(
-                "Generate 2-hour trading signals with: \n"
+                f"Generate {timeframe} trading signals with: \n"
                 "- Entry/exit price ranges \n"
                 "- Stop-loss levels \n"
                 "- Risk/reward ratios \n"
@@ -49,7 +53,7 @@ class StocksTasks():
             expected_output=(
                 "List[Dict]: Executable signals with - "
                 "ticker, company_name, direction (Buy/Sell), confidence (0-1), "
-                "timeframe, price_target, max_risk, rationale"
+                "timeframe, current_price, price_target, max_risk, rationale"
             ),
             output_file='./signals.json'
         )

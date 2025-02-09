@@ -1,0 +1,9 @@
+crewai
+crewai_tools
+python-dotenv
+langchain
+langchain_openai
+requests
+pandas
+yfinance
+pandas_market_calendars 

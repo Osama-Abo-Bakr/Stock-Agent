@@ -1,12 +1,24 @@
 [
-  {
-    "ticker": "MSFT",
-    "company_name": "Microsoft Corporation",
-    "direction": "Buy",
-    "confidence": 0.75,
-    "timeframe": "2 hours",
-    "price_target": 419.99,
-    "max_risk": 1.83,
-    "rationale": "Oversold conditions with RSI <30 and decreasing bearish MACD momentum suggest reversal potential."
-  }
+    {
+        "ticker": "AAPL",
+        "company_name": "Apple Inc.",
+        "direction": "Sell",
+        "confidence": 0.65,
+        "timeframe": "Next trading session",
+        "current_price": 228.01,
+        "price_target": 224.00,
+        "max_risk": 6.00,
+        "rationale": "RSI is below 30, indicating oversold conditions. The MACD histogram is indicating a bearish crossover."
+    },
+    {
+        "ticker": "TSLA",
+        "company_name": "Tesla, Inc.",
+        "direction": "Sell",
+        "confidence": 0.70,
+        "timeframe": "Next trading session",
+        "current_price": 383.68,
+        "price_target": 375.00,
+        "max_risk": 8.00,
+        "rationale": "Market sentiment is negative, and the MACD analysis shows bearish signals with weakening momentum."
+    }
 ]

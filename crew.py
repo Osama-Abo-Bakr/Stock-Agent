@@ -20,7 +20,7 @@ predictor = agents.stock_predictor()
 
 fetch_task = tasks.news_fetcher_task(news_fetcher)
 analysis_task = tasks.news_stocks_analyzer_task(analyzer, [fetch_task])
-prediction_task = tasks.stock_predictor_task(predictor, [analysis_task])
+prediction_task = tasks.stock_predictor_task(predictor, [analysis_task], timeframe='2 hours')
 
 crew = Crew(
     agents=[news_fetcher, analyzer, predictor],

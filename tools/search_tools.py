@@ -1,31 +1,21 @@
 import json
 import os
+
 import requests
 from langchain.tools import tool
-from datetime import datetime, timedelta
 
 
 class SearchTools():
-    @tool("Search financial news")
+
+    @tool("Search the internet")
     def search_internet(query):
         """Useful to search the internet
         about a a given topic and return relevant results"""
         print("Searching the internet...")
         top_result_to_return = 5
         url = "https://google.serper.dev/search"
-        
-        # payload = json.dumps(
-        #     {"q": query, "num": top_result_to_return, "tbm": "nws"})
-        
-        # Get news from last 4 hours (API limitation)
-        time_filter = (datetime.now() - timedelta(hours=4)).strftime('%Y-%m-%dT%H:%M:%S')
-        
-        payload = json.dumps({
-            "q": f"{query} after:{time_filter}",
-            "num": 5,
-            "tbm": "nws",
-            "sort": "date"
-        })
+        payload = json.dumps(
+            {"q": query, "num": top_result_to_return, "tbm": "nws"})
         headers = {
             'X-API-KEY': os.environ['SERPER_API_KEY'],
             'content-type': 'application/json'
